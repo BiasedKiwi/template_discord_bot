@@ -10,6 +10,7 @@ python-dotenv = "*"
 pyyaml = "*"
 pylint = "*"
 black = "*"
+pre-commit = "*"
 
 [dev-packages]
 
