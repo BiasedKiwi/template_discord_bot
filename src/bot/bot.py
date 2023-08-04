@@ -61,3 +61,4 @@ if __name__ == "__main__":
     console.print(
         "Please launch the [link=../../../launcher.py]launcher.py[/] file instead of this one directly."
     )
+# ignore comment
