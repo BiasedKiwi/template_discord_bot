@@ -8,6 +8,8 @@ rich = "*"
 "discord.py" = "*"
 python-dotenv = "*"
 pyyaml = "*"
+pylint = "*"
+black = "*"
 
 [dev-packages]
 
