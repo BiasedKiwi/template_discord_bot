@@ -433,7 +433,9 @@ disable=raw-checker-failed,
         subprocess-run-check,
         missing-module-docstring,
         missing-function-docstring,
-        line-too-long
+        line-too-long,
+        R0801,
+        
 
 # Enable the message, report, category or checker with the given id(s). You can
 # either give multiple identifier separated by comma (,) or put this option
