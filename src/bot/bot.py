@@ -1,3 +1,5 @@
+import logging
+
 from pathlib import Path
 from pkgutil import iter_modules
 from subprocess import run
@@ -11,9 +13,19 @@ except ImportError:
     # This should only be used on client machines since directly using `pip install` can mess with Pipenv environments.
     prompt = input("Missing libraries, would you like to install them now? (Y/n): ")
     if prompt.lower() == "y" or prompt == "":
-        run(["python", "-m", "pip", "install", "-r", Path(__file__).parent.parent.parent / 'requirements.txt'])
+        run(
+            [
+                "python",
+                "-m",
+                "pip",
+                "install",
+                "-r",
+                Path(__file__).parent.parent.parent / "requirements.txt",
+            ]
+        )
 
 console = Console()
+
 
 class Bot(commands.AutoShardedBot):
     def __init__(self, **kwargs):
@@ -42,5 +54,8 @@ class Bot(commands.AutoShardedBot):
                 continue
             await client_obj.load_extension(ext)
 
+
 if __name__ == "__main__":
-    console.print("Please launch the [link=../../../launcher.py]launcher.py[/] file instead of this one directly.")
+    console.print(
+        "Please launch the [link=../../../launcher.py]launcher.py[/] file instead of this one directly."
+    )
