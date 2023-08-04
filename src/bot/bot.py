@@ -38,11 +38,9 @@ class Bot(commands.AutoShardedBot):
 
     async def setup_hook(self):
         # Code here run after the bot has logged in, but before it has connected to the Websocket.
-        await self.load_cogs(client_obj=self, ignore=self.ignore_cogs)
+        await self.load_cogs(ignore=self.ignore_cogs)
 
-    async def load_cogs(
-        self, client_obj: commands.AutoShardedBot, ignore: Optional[List] = None
-    ) -> None:
+    async def load_cogs(self, ignore: Optional[List] = None) -> None:
         all_extensions = [
             m.name
             for m in iter_modules(
@@ -54,11 +52,10 @@ class Bot(commands.AutoShardedBot):
         for ext in all_extensions:
             if ext in ignore:
                 continue
-            await client_obj.load_extension(ext)
+            await self.load_extension(ext)
 
 
 if __name__ == "__main__":
     console.print(
         "Please launch the [link=../../../launcher.py]launcher.py[/] file instead of this one directly."
     )
-# ignore comment
