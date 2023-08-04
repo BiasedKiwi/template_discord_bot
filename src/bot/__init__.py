@@ -1,2 +1,2 @@
 from .bot import *
-from.config import *
+from .config import *
