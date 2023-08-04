@@ -1,4 +1,4 @@
-import logging
+# pylint: disable=missing-class-docstring
 
 from pathlib import Path
 from pkgutil import iter_modules
@@ -28,6 +28,8 @@ console = Console()
 
 
 class Bot(commands.AutoShardedBot):
+    """Bot instance"""
+
     def __init__(self, **kwargs):
         self.case_insensitive = True
         self.strip_after_prefix = True
