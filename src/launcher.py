@@ -36,21 +36,26 @@ now = datetime.now()
 
 logger = logging.getLogger("discord")
 raw_conf = get_raw_config()
+
 IGNORED_EXTENSIONS = []
 INTENTS = None
-
 TOKEN = ""
 PREFIX = ""
 LOG_LEVEL = ""
 DEBUG_EVENTS = ""
+PREFIX = ""
 
 
 def configure_logger():
     global LOG_LEVEL
     global DEBUG_EVENTS
 
+    path = (
+        Path(__file__).parent.parent / f"logs/{now.strftime('%Y-%m-%d_%H-%M-%S')}.log"
+    )
+
     handler = logging.FileHandler(
-        filename=f"../logs/{now.strftime('%Y-%m-%d_%H-%M-%S')}.log",
+        filename=path.absolute(),
         encoding="utf-8",
         mode="w",
     )
@@ -79,7 +84,7 @@ def get_token():
     token = os.environ.get("TOKEN")
     if token is None:
         print(
-            "Please provide a valid Discord API token. You can set an environment variable 'TOKEN' to allow Disco Stats to access the token."
+            "Please provide a valid Discord API token. You can set an environment variable 'TOKEN' to allow the bot to access the token."
         )
         while (
             True
@@ -101,22 +106,32 @@ def set_intents():
 
     INTENTS = discord.Intents.default()
     INTENTS.message_content = True
-    INTENTS.guilds = True
-    INTENTS.members = True
     INTENTS.voice_states = True
+
+    return INTENTS
+
+
+def get_prefix():
+    global PREFIX
+
+    PREFIX = raw_conf["bot"][0]["prefix"]
+
+    return PREFIX
 
 
 if __name__ == "__main__":
+    configure_logger()
+    get_token()
+    set_intents()
+
     instance = Bot(
-        command_prefix="..",
+        command_prefix=get_prefix(),
         intents=set_intents(),
         strip_after_prefix=True,
         case_insensitive=True,
         enable_debug_events=DEBUG_EVENTS,
         ignore_cogs=IGNORED_EXTENSIONS,
     )  # Initialise a bot instance
-
-    logger.info("Welcome to Disco Stats")
     try:
         instance.run(TOKEN, log_level=LOG_LEVEL)
     except KeyboardInterrupt:
