@@ -435,7 +435,8 @@ disable=raw-checker-failed,
         missing-function-docstring,
         line-too-long,
         R0801,
-        missing-class-docstring
+        missing-class-docstring,
+        import-error
         
 
 # Enable the message, report, category or checker with the given id(s). You can
