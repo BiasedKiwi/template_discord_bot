@@ -1,5 +1,7 @@
+bot:
+  - prefix: "?"
 logging:
-  - debug_logs: false  # Show verbose logging
+  - debug_logs: true  # Show verbose logging
 debug:
   debug_cogs: ["debug"]  # Module name of debug cogs
   load_debug_cogs: true
