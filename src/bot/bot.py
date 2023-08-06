@@ -1,9 +1,7 @@
 # pylint: disable=missing-class-docstring
-
 from pathlib import Path
 from pkgutil import iter_modules
 from subprocess import run
-from typing import Optional, List
 
 try:
     # Non-standard imports go here
@@ -38,20 +36,14 @@ class Bot(commands.AutoShardedBot):
 
     async def setup_hook(self):
         # Code here run after the bot has logged in, but before it has connected to the Websocket.
-        await self.load_cogs(ignore=self.ignore_cogs)
+        await self.load_cogs()
 
-    async def load_cogs(self, ignore: Optional[List] = None) -> None:
+    async def load_cogs(self) -> None:
+        ext_path = Path(__file__).parent / "./extensions"
         all_extensions = [
-            m.name
-            for m in iter_modules(
-                ["./disco_stats/extensions"], prefix="disco_stats.extensions."
-            )
+            m.name for m in iter_modules([str(ext_path)], prefix="bot.extensions.")
         ]
-        if ignore is None:
-            return
         for ext in all_extensions:
-            if ext in ignore:
-                continue
             await self.load_extension(ext)
 
 
