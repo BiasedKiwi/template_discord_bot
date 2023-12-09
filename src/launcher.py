@@ -3,27 +3,10 @@ import os
 from datetime import datetime
 from pathlib import Path
 from subprocess import run
-
-try:
-    # Non-standard imports go here
-    import discord
-    from dotenv import load_dotenv
-    from rich.console import Console
-    from rich.traceback import install
-except ImportError:
-    # This should only be used on client machines since directly using `pip install` can mess with Pipenv environments.
-    prompt = input("Missing libraries, would you like to install them now? (Y/n): ")
-    if prompt.lower() == "y" or prompt == "":
-        run(
-            [
-                "python",
-                "-m",
-                "pip",
-                "install",
-                "-r",
-                Path(__file__).parent.parent.parent / "requirements.txt",
-            ]
-        )
+import discord
+from dotenv import load_dotenv
+from rich.console import Console
+from rich.traceback import install
 
 from bot import get_raw_config, Bot
 
