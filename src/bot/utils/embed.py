@@ -7,4 +7,5 @@ def gen_embed(color: str = "default", **kwargs):
     embed = discord.Embed(**kwargs, color=colour)
     return embed
 
+
 theme = config.load_theme()  # Runs on import

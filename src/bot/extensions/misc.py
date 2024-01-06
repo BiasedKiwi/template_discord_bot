@@ -61,7 +61,9 @@ class Cog(commands.Cog):
     @app_commands.command(name="ping")
     async def ping(self, interaction: discord.Interaction):
         # embed = gen_embed(title="Pong!", description=f"{round(self.bot.latency * 1000)}ms")
-        embed = gen_embed(title="Pong!", description=f"{round(self.bot.latency * 1000)}ms")
+        embed = gen_embed(
+            title="Pong!", description=f"{round(self.bot.latency * 1000)}ms"
+        )
         await interaction.response.send_message(embed=embed)
 
 
