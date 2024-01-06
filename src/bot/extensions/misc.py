@@ -8,7 +8,7 @@ from discord.ext import commands
 from discord import app_commands
 from discord.ext.commands import Context, Greedy
 
-from .. import gen_embed
+from .. import gen_embed  # pylint: disable=no-name-in-module
 
 
 class Cog(commands.Cog):

@@ -1,5 +1,5 @@
 import discord
-from .. import config
+from .. import config  # pylint: disable=no-name-in-module
 
 
 def gen_embed(color: str = "default", **kwargs):
