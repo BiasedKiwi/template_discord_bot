@@ -20,6 +20,7 @@ now = datetime.now()
 logger = logging.getLogger("discord")
 raw_conf = get_raw_config()
 
+# If you would like to edit these values, use the config.yaml file in ./bot/config.yaml
 IGNORED_EXTENSIONS = []
 INTENTS = None
 TOKEN = ""
