@@ -438,7 +438,8 @@ disable=raw-checker-failed,
         missing-class-docstring,
         import-error,
         missing-module-docstring,
-        syntax-error
+        syntax-error,
+        relative-beyond-top-level
         
 
 # Enable the message, report, category or checker with the given id(s). You can
