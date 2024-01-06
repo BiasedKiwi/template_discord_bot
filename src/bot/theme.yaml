@@ -1,0 +1,4 @@
+theme:
+  - default: "A72608"  # default status color for embeds
+  - warning: ""  # warning status color for embeds
+  - error: "" # error status color for embeds

@@ -8,6 +8,8 @@ from discord.ext import commands
 from discord import app_commands
 from discord.ext.commands import Context, Greedy
 
+from .. import gen_embed
+
 
 class Cog(commands.Cog):
     def __init__(self, bot: commands.Bot):
@@ -58,9 +60,9 @@ class Cog(commands.Cog):
 
     @app_commands.command(name="ping")
     async def ping(self, interaction: discord.Interaction):
-        await interaction.response.send_message(
-            f"Pong! ({round(self.bot.latency * 1000)}ms)"
-        )
+        # embed = gen_embed(title="Pong!", description=f"{round(self.bot.latency * 1000)}ms")
+        embed = gen_embed(title="Pong!", description=f"{round(self.bot.latency * 1000)}ms")
+        await interaction.response.send_message(embed=embed)
 
 
 async def setup(bot: commands.Bot):

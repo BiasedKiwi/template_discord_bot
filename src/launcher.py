@@ -2,13 +2,12 @@ import logging
 import os
 from datetime import datetime
 from pathlib import Path
-from subprocess import run
 import discord
 from dotenv import load_dotenv
 from rich.console import Console
 from rich.traceback import install
 
-from bot import get_raw_config, Bot
+from bot import load_config, Bot
 
 
 install(show_locals=True, suppress=[discord])
@@ -18,7 +17,7 @@ console.rule("[yellow bold]LOADING", characters="=")
 now = datetime.now()
 
 logger = logging.getLogger("discord")
-raw_conf = get_raw_config()
+conf = load_config()
 
 # If you would like to edit these values, use the config.yaml file in ./bot/config.yaml
 IGNORED_EXTENSIONS = []
@@ -48,7 +47,7 @@ def configure_logger():
     )
     logger.addHandler(handler)
 
-    if raw_conf["logging"][0]["debug_logs"]:
+    if conf["debug_logs"]:
         LOG_LEVEL = logging.DEBUG
         DEBUG_EVENTS = True
         logger.warning(
@@ -83,8 +82,8 @@ def set_intents():
     global IGNORED_EXTENSIONS
     global INTENTS
 
-    if not raw_conf["debug"]["load_debug_cogs"]:
-        IGNORED_EXTENSIONS = raw_conf["debug"]["debug_cogs"]
+    if not conf["load_debug_cogs"]:
+        IGNORED_EXTENSIONS = conf["debug_cogs"]
     else:
         IGNORED_EXTENSIONS = []
 
@@ -98,7 +97,7 @@ def set_intents():
 def get_prefix():
     global PREFIX
 
-    PREFIX = raw_conf["bot"][0]["prefix"]
+    PREFIX = conf["prefix"]
 
     return PREFIX
 
