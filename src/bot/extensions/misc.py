@@ -2,6 +2,7 @@
 
 import logging
 from typing import Literal, Optional
+from random import choice
 
 import discord
 from discord.ext import commands
@@ -60,10 +61,15 @@ class Cog(commands.Cog):
 
     @app_commands.command(name="ping")
     async def ping(self, interaction: discord.Interaction):
-        # embed = gen_embed(title="Pong!", description=f"{round(self.bot.latency * 1000)}ms")
         embed = gen_embed(
             title="Pong!", description=f"{round(self.bot.latency * 1000)}ms"
         )
+        await interaction.response.send_message(embed=embed)
+
+    @app_commands.command(name="coinflip")
+    async def coinflip(self, interaction: discord.Interaction):
+        result = choice(["heads", "tails"])
+        embed = gen_embed(title=f"It's {result}!", color="invisible")
         await interaction.response.send_message(embed=embed)
 
 
