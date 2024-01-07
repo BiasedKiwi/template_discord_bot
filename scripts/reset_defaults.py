@@ -48,7 +48,7 @@ def restore_config():
 
 
 def main():
-    if not len(sys.argv) > 1:
+    if len(sys.argv) <= 1:
         print("No arguments specified, run with -h flag for help")
         sys.exit(1)
     if args.config:
