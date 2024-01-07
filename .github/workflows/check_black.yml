@@ -3,11 +3,11 @@ name: Check Black
 on: [push]
 
 jobs:
-  build:
+  run_black:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: ["3.10"]
+        python-version: ["3.12.1"]
     steps:
     - uses: actions/checkout@v3
     - name: Set up Python ${{ matrix.python-version }}
