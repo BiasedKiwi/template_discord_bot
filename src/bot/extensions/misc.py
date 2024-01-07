@@ -69,7 +69,7 @@ class Cog(commands.Cog):
     @app_commands.command(name="coinflip")
     async def coinflip(self, interaction: discord.Interaction):
         result = choice(["heads", "tails"])
-        embed = gen_embed(title=f"It's {result}!", color="invisible")
+        embed = gen_embed(title=f"It's {result}!", color="random")
         await interaction.response.send_message(embed=embed)
 
 
