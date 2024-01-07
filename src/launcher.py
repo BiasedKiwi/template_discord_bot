@@ -61,6 +61,20 @@ def configure_logger():
         )
     logger.setLevel(LOG_LEVEL)
 
+    if conf["clean_logs"]:
+        directory = "../logs"
+        files = os.listdir(directory)
+        log_files = sorted(
+            [f for f in files if f.endswith(".log") and f != ".gitkeep"],
+            key=lambda f: os.path.getmtime(os.path.join(directory, f)),
+        )
+
+        files_to_keep = log_files[-conf["keep_logs"] :] + [".gitkeep"]
+        files_to_delete = [f for f in files if f not in files_to_keep]
+
+        for file_to_delete in files_to_delete:
+            os.remove(os.path.join(directory, file_to_delete))
+
 
 def get_token():
     load_dotenv()
