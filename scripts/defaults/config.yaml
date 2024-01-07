@@ -1,0 +1,13 @@
+bot:
+  - prefix: "?"
+logging:
+  # Show verbose logging
+  - debug_logs: false
+  # Turning this on will only keep up to 3 log files in the log directory
+  - clean_logs: true
+  # Number of log files to keep
+  - keep_logs: 5
+debug:
+  # Module name of debug cogs
+  debug_cogs: ["debug"]
+  load_debug_cogs: true
