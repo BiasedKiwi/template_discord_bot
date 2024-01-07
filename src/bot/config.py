@@ -42,7 +42,6 @@ def load_config(path: str = Path(__file__).parent / "config.yaml"):
 def load_theme(path: str = Path(__file__).parent / "theme.yaml"):
     with open(path, encoding="utf-8") as file:
         _dict = yaml.load(file, Loader=yaml.FullLoader)
-        print(_dict)
 
     clean = clean_values(_dict)
     return clean
