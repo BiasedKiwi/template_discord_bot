@@ -25,13 +25,6 @@ def clean_values(input_dict, output_dict=None) -> Dict[str, str]:
     return output_dict
 
 
-def get_raw_config(path: str = Path(__file__).parent / "config.yaml"):
-    """Being deprecated. Return a raw dict of the config file (using `yaml.load`)"""
-    with open(path, encoding="utf-8") as file:
-        _dict = yaml.load(file, Loader=yaml.FullLoader)
-        return _dict
-
-
 def load_config(path: str = Path(__file__).parent / "config.yaml") -> Dict[str, str]:
     """Generate a dict based on the theme configuration file"""
     with open(path, encoding="utf-8") as file:
