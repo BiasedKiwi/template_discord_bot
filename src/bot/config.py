@@ -1,9 +1,10 @@
 from pathlib import Path
+from typing import Dict
 
 import yaml
 
 
-def clean_values(input_dict, output_dict=None):
+def clean_values(input_dict, output_dict=None) -> Dict[str, str]:
     if output_dict is None:
         output_dict = {}
 
@@ -31,7 +32,8 @@ def get_raw_config(path: str = Path(__file__).parent / "config.yaml"):
         return _dict
 
 
-def load_config(path: str = Path(__file__).parent / "config.yaml"):
+def load_config(path: str = Path(__file__).parent / "config.yaml") -> Dict[str, str]:
+    """Generate a dict based on the theme configuration file"""
     with open(path, encoding="utf-8") as file:
         _dict = yaml.load(file, Loader=yaml.FullLoader)
 
@@ -39,7 +41,8 @@ def load_config(path: str = Path(__file__).parent / "config.yaml"):
     return clean
 
 
-def load_theme(path: str = Path(__file__).parent / "theme.yaml"):
+def load_theme(path: str = Path(__file__).parent / "theme.yaml") -> Dict[str, str]:
+    """Generate a dict based on the theme configuration file"""
     with open(path, encoding="utf-8") as file:
         _dict = yaml.load(file, Loader=yaml.FullLoader)
 
