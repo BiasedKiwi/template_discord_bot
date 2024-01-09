@@ -117,7 +117,12 @@ def get_prefix():
 
 
 if __name__ == "__main__":
-    configure_logger()
+    try:
+        configure_logger()
+        logging_setup = True
+    except Exception:
+        console.log("[red]ERROR: An error occured while trying to setup logging. This can be safely ignored.")
+        logging_setup = False
     get_token()
     set_intents()
 
@@ -130,7 +135,10 @@ if __name__ == "__main__":
         ignore_cogs=IGNORED_EXTENSIONS,
     )  # Initialise a bot instance
     try:
-        instance.run(TOKEN, log_level=LOG_LEVEL)
+        if logging_setup:
+            instance.run(TOKEN, log_level=LOG_LEVEL)
+        else:
+            instance.run(TOKEN)
     except KeyboardInterrupt:
         logger.info("")
     except discord.errors.LoginFailure:
