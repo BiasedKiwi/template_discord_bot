@@ -440,7 +440,8 @@ disable=raw-checker-failed,
         missing-module-docstring,
         syntax-error,
         relative-beyond-top-level,
-        no-member
+        no-member,
+        anomalous-backslash-in-string
         
 
 # Enable the message, report, category or checker with the given id(s). You can
