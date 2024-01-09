@@ -441,7 +441,9 @@ disable=raw-checker-failed,
         syntax-error,
         relative-beyond-top-level,
         no-member,
-        anomalous-backslash-in-string
+        anomalous-backslash-in-string,
+        invalid-name,
+        broad-exception-caught,
         
 
 # Enable the message, report, category or checker with the given id(s). You can
