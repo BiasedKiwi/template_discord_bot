@@ -121,7 +121,9 @@ if __name__ == "__main__":
         configure_logger()
         logging_setup = True
     except Exception:
-        console.log("[red]ERROR: An error occured while trying to setup logging. This can be safely ignored.")
+        console.log(
+            "[red]ERROR: An error occured while trying to setup logging. This can be safely ignored."
+        )
         logging_setup = False
     get_token()
     set_intents()
