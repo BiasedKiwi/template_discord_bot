@@ -1,26 +1,9 @@
 # pylint: disable=missing-class-docstring
 from pathlib import Path
 from pkgutil import iter_modules
-from subprocess import run
 
-try:
-    # Non-standard imports go here
-    from discord.ext import commands
-    from rich.console import Console
-except ImportError:
-    # This should only be used on client machines since directly using `pip install` can mess with Pipenv environments.
-    prompt = input("Missing libraries, would you like to install them now? (Y/n): ")
-    if prompt.lower() == "y" or prompt == "":
-        run(
-            [
-                "python",
-                "-m",
-                "pip",
-                "install",
-                "-r",
-                Path(__file__).parent.parent.parent / "requirements.txt",
-            ]
-        )
+from discord.ext import commands
+from rich.console import Console
 
 console = Console()
 
