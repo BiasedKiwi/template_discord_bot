@@ -25,18 +25,18 @@ def clean_values(input_dict, output_dict=None) -> Dict[str, str]:
     return output_dict
 
 
-def load_config(path: str = Path(__file__).parent / "config.yaml") -> Dict[str, str]:
+def load_config() -> Dict[str, str]:
     """Generate a dict based on the theme configuration file"""
-    with open(path, encoding="utf-8") as file:
+    with open(Path(__file__).parent / "config.yaml", encoding="utf-8") as file:
         _dict = yaml.load(file, Loader=yaml.FullLoader)
 
     clean = clean_values(_dict)
     return clean
 
 
-def load_theme(path: str = Path(__file__).parent / "theme.yaml") -> Dict[str, str]:
+def load_theme() -> Dict[str, str]:
     """Generate a dict based on the theme configuration file"""
-    with open(path, encoding="utf-8") as file:
+    with open(Path(__file__).parent / "theme.yaml", encoding="utf-8") as file:
         _dict = yaml.load(file, Loader=yaml.FullLoader)
 
     clean = clean_values(_dict)
