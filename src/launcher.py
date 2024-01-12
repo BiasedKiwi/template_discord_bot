@@ -26,7 +26,6 @@ TOKEN = ""
 PREFIX = ""
 LOG_LEVEL = ""
 DEBUG_EVENTS = ""
-PREFIX = ""
 
 
 def configure_logger():
