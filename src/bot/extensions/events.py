@@ -4,6 +4,10 @@ import logging
 
 from discord.ext import commands
 
+from rich.console import Console
+
+console = Console()
+
 
 class Events(commands.Cog):
     def __init__(self, bot: commands.Bot):
@@ -25,6 +29,7 @@ class Events(commands.Cog):
 
     @commands.Cog.listener()
     async def on_ready(self):
+        console.rule("[green bold]READY", characters="=")
         self.logger.info("The bot is ready for use.")
         self.logger.info(f"Command prefix: '{self.bot.command_prefix}'")
 
