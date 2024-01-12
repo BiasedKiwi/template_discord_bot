@@ -19,10 +19,11 @@ now = datetime.now()
 logger = logging.getLogger("discord")
 conf = load_config()
 
-# If you would like to edit these values, use the config.yaml file in ./bot/config.yaml
-IGNORED_EXTENSIONS = []
-INTENTS = None
 TOKEN = ""
+INTENTS = None
+IGNORED_EXTENSIONS = []
+
+# If you would like to edit these values, use the config.yaml file in ./bot/config.yaml
 PREFIX = ""
 LOG_LEVEL = ""
 DEBUG_EVENTS = ""
